@@ -1,19 +1,12 @@
 import requests
 from reportlab.pdfgen import canvas
 
-api_url = "https://testh.ristonova.it/novasrvdiet/public/v1/1/piattocompleto/fasciaeta"
+api_url = ""
 headers = {
     "accept": "application/json",
     "Content-Type": "application/json",
 }
-body = {
-"allergeni": "1",
-"bromatologico": "1",
-"dieId": "31",
-"etaId": "42",
-"piaId": "281",
-"prodotti": "1"
-}
+
 
 def draw(c, data):
     c.drawString(20,20,data["code"])
