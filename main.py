@@ -1,18 +1,32 @@
 import requests
 from reportlab.pdfgen import canvas
+from dotenv import load_dotenv
+import os
+body = {
+"allergeni": "1",
+"bromatologico": "1",
+"dieId": "31",
+"etaId": "42",
+"piaId": "281",
+"prodotti": "1"
+}
+load_dotenv()
+api_url = os.getenv("API_URL")
 
-api_url = ""
 headers = {
     "accept": "application/json",
     "Content-Type": "application/json",
 }
 
-
 def draw(c, data):
-    c.drawString(20,20,data["code"])
+    c.drawString(20,100,data["code"])
+    c.setFont("Helvetica", 30)
+    c.setFillColorRGB(100, 3, 67)
+    c.drawString(20,20, data["desc"])
+    c.setFont("Helvetica", 300)
+    c.setFillColorRGB(100, 3, 67)
     c.showPage()
     c.save()
-    c.setFont("Helvetica", 30)
     
 try:
     myReq = requests.post(api_url, headers=headers, json=body)
